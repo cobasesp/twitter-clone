@@ -5,5 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8080:8080
-    command: php -S 0.0.0.0:8080 public/index.php
+      - 80:80
+    volumes:
+      - .:/src
+    command: php -S 0.0.0.0:80 public/index.php
