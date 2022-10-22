@@ -9,7 +9,7 @@ php7-mbstring \
 php7-openssl
 
 # for our code run smoothly
-RUN apk --no-chace add \
+RUN apk --no-cache add \
 php7-json \
 php7-dom \
 curl \
