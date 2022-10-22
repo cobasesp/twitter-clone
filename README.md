@@ -1,24 +1,61 @@
-# Lumen PHP Framework
+# Docker LAMP ready to use environment
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+<br>
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+> MYSQL is still pending to add to docker-compose, you can add it manually
 
-## Official Documentation
+<br>
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## What is this?
+This is a Docker php serverless LAMP (MySQL still pending to be added), this is ready to use, just download, execute docker compose instructions and you are ready to code!
 
-## Contributing
+You can choose from various types of frameworks or php standalone versions
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<br>
 
-## Security Vulnerabilities
+## How to use it?
+First of all, clone the repository:
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+```bash
+git clone https://github.com/cobasesp/docker-lamp.git
+```
 
-## License
+<br>
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Once you cloned the repository, you can change the branch in order to use one of the prepared frameworks:
+
+* Lumen 8
+* Slim 4.3
+* PHP standalone
+
+<br>
+
+```bash
+git checkout slim-framework
+```
+
+```bash
+git checkout lumen-framework
+```
+
+```bash
+git checkout standalone
+```
+
+<br>
+
+Now, you can start to build you docker image and start using docker run to start you image and start to work
+
+```bash
+docker-compose up --build
+```
+
+Now you can enter `http:://localhost` to see the main url and start to code!
+
+<br>
+
+>Don't forget to change the remote repository url in order to be able to upload you commits to you own repository
+
+<br>
+
+### Enjoy!
