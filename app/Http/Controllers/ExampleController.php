@@ -14,5 +14,15 @@ class ExampleController extends Controller
         //
     }
 
+    public function getAllUsers()
+    {
+        $users = \DB::table('users')->get();
+ 
+        foreach ($users as $user)
+        {
+            var_dump($user->name);
+        }
+    }
+
     //
 }

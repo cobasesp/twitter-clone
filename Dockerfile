@@ -1,4 +1,7 @@
-FROM alpine:3.13
+# FROM alpine:3.13
+
+FROM php:7.4-fpm-alpine3.14
+RUN docker-php-ext-install pdo_mysql
 
 # for laravel lumen run smoothly
 RUN apk --no-cache add \
@@ -7,6 +10,8 @@ php7-fpm \
 php7-pdo \
 php7-mbstring \
 php7-openssl
+
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 # for our code run smoothly
 RUN apk --no-cache add \

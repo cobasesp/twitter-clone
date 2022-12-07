@@ -20,3 +20,8 @@ $router->get('/test', function () use ($router) {
 $router->get('/', function () use ($router) {
     return view('home', ['version' => $router->app->version()]);
 });
+
+$router->get('/users', function () use ($router) {
+    $controller = new App\Http\Controllers\ExampleController();
+    $users = $controller->getAllUsers();
+});

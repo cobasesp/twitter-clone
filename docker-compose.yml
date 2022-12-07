@@ -1,11 +1,23 @@
 version: '3.8'
 services:
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: alpine-php-mysql
     ports:
       - 80:80
     volumes:
       - .:/src
     command: php -S 0.0.0.0:80 public/index.php
+  # Database
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lumen
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user

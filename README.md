@@ -1,13 +1,9 @@
-# Docker LAMP ready to use environment
-
-<br>
-
-> MYSQL is still pending to add to docker-compose, you can add it manually
+# Docker Alpine PHP + MySQL ready to use environment
 
 <br>
 
 ## What is this?
-This is a Docker php serverless LAMP (MySQL still pending to be added), this is ready to use, just download, execute docker compose instructions and you are ready to code!
+This is a Docker php serverless, this is ready to use, just download, execute docker compose instructions and you are ready to code!
 
 You can choose from various types of frameworks or php standalone versions
 
@@ -19,8 +15,6 @@ First of all, clone the repository:
 ```bash
 git clone https://github.com/cobasesp/docker-lamp.git
 ```
-
-<br>
 
 Once you cloned the repository, you can change the branch in order to use one of the prepared frameworks:
 
@@ -47,8 +41,10 @@ git checkout standalone
 Now, you can start to build you docker image and start using docker run to start you image and start to work
 
 ```bash
-docker-compose up --build
+docker build -t alpine-php-mysql .
 ```
+
+>If you want to put another name to the image, remmember to change it in the docker-compose file
 
 Now you can enter `http:://localhost` to see the main url and start to code!
 
