@@ -5,7 +5,7 @@
 ## What is this?
 This is a Docker php serverless, this is ready to use, just download, execute docker compose instructions and you are ready to code!
 
-You can choose from various types of frameworks or php standalone versions
+You can choose from lumen framework or php standalone versions
 
 <br>
 
@@ -19,14 +19,9 @@ git clone https://github.com/cobasesp/docker-lamp.git
 Once you cloned the repository, you can change the branch in order to use one of the prepared frameworks:
 
 * Lumen 8
-* Slim 4.3
 * PHP standalone
 
 <br>
-
-```bash
-git checkout slim-framework
-```
 
 ```bash
 git checkout lumen-framework
