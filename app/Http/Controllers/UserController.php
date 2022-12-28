@@ -26,6 +26,17 @@ class UserController extends Controller
         $email = $request->post('email');
         $passwd = $request->post('passwd');
 
+        if ($email == null || $passwd == null) {
+            $this->error = true;
+            $this->msg = "Please fill email and password correctly";
+
+            return json_encode([
+                "error" => $this->error,
+                "msg" => $this->msg,
+                "data" => null
+            ]);
+        }
+
         $user = User::where('email', $email)
                         ->where('passwd', $passwd)
                         ->first();
