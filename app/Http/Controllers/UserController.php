@@ -32,7 +32,7 @@ class UserController extends Controller
 
         if($user == null) {
             return $this->responseError('User doesn\'t exist');
-        } 
+        }
 
         return $this->responseOk($user);
     }
