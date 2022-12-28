@@ -8,9 +8,6 @@ use App\Models\User;
 class UserController extends Controller
 {
 
-    private $error;
-    private $msg;
-
     /**
      * Create a new controller instance.
      *
@@ -18,8 +15,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->error = false;
-        $this->msg = "";
+        //
     }
 
     public function doLogin(Request $request) {
@@ -27,14 +23,7 @@ class UserController extends Controller
         $passwd = $request->post('passwd');
 
         if ($email == null || $passwd == null) {
-            $this->error = true;
-            $this->msg = "Please fill email and password correctly";
-
-            return json_encode([
-                "error" => $this->error,
-                "msg" => $this->msg,
-                "data" => null
-            ]);
+            return $this->responseError('Please fill email and password correctly');
         }
 
         $user = User::where('email', $email)
@@ -42,15 +31,10 @@ class UserController extends Controller
                         ->first();
 
         if($user == null) {
-            $this->error = true;
-            $this->msg = "User doesn't exist";
+            return $this->responseError('User doesn\'t exist');
         } 
 
-        return json_encode([
-            "error" => $this->error,
-            "msg" => $this->msg,
-            "data" => $user
-        ]);
+        return $this->responseOk($user);
     }
 
     public function getAllUsers()
