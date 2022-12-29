@@ -87,6 +87,29 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Function to find and delete a user by password and id
+     */
+    public function deleteUser(Request $request) {
+        $id = $request->post('id');
+        $passwd = $request->post('passwd');
+
+        $user = User::where('id', $id)
+                        ->where('passwd', $passwd)
+                        ->first();
+        
+        if($user == null) {
+            return $this->responseError('Incorrect password or user doesn\'t exist');
+        }
+
+        try{
+            $user->delete();
+            return $this->responseOk('User deleted successfully');
+        }catch (Exception $e) {
+            return $this->responseError('There was an error during deleting the user, please try again in a few minutes');
+        }
+    }
+
     public function getAllUsers()
     {
         $users = \DB::table('users')->get();
