@@ -51,6 +51,42 @@ class UserController extends Controller
         return $this->responseOk(['token' => $jwt]);
     }
 
+    /**
+     * Function to add a new user to DB
+     * 
+     * Need username, name, location, email, passwd as required parameters
+     */
+    public function addNewUser(Request $request) {
+        $data = $request->post();
+
+        // Check if some data is null or is empty, all must be required
+        if( $data == null || 
+        !isset($data['username']) || $data['username'] == null || 
+        !isset($data['name']) || $data['name'] == null || 
+        !isset($data['location']) || $data['location'] == null || 
+        !isset($data['email']) || $data['email'] == null || 
+        !isset($data['passwd']) || $data['passwd'] == null) 
+        {
+            return $this->responseError("Error, fill all required data");
+        }
+
+        try {
+            $newUser = User::create([
+                'username' => $data['username'],
+                'name'     => $data['name'],
+                'location' => $data['location'],
+                'email'    => $data['email'],
+                'passwd'   => $data['passwd'],
+                'active'   => 1
+            ]);
+
+            return $this->responseOk('User created successfully!');
+
+        } catch (Exception $e) {
+            return $this->responseError('There was an error during the user creation process, try again in a few minutes');
+        }
+    }
+
     public function getAllUsers()
     {
         $users = \DB::table('users')->get();

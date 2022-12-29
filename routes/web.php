@@ -11,3 +11,4 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/user-login', 'UserController@doLogin');
+$router->post('/add-user', 'UserController@addNewUser');
