@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class UserController extends Controller
 {
@@ -18,6 +20,9 @@ class UserController extends Controller
         //
     }
 
+    /**
+     * Get the user by password and create a JWT token to response
+     */
     public function doLogin(Request $request) {
         $email = $request->post('email');
         $passwd = $request->post('passwd');
@@ -34,7 +39,16 @@ class UserController extends Controller
             return $this->responseError('User doesn\'t exist');
         }
 
-        return $this->responseOk($user);
+        $data = [
+            "username"  => $user->username,
+            "name"      => $user->name,
+            "location"  => $user->location,
+            "email"     => $user->email,
+        ];
+
+        $jwt = JWT::encode($data, 'secret', 'HS256');
+
+        return $this->responseOk(['token' => $jwt]);
     }
 
     public function getAllUsers()
