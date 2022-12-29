@@ -46,7 +46,8 @@ class UserController extends Controller
             "email"     => $user->email,
         ];
 
-        $jwt = JWT::encode($data, 'secret', 'HS256');
+        $token = env('JWT_TOKEN_SECRET');
+        $jwt = JWT::encode($data, $token, 'HS256');
 
         return $this->responseOk(['token' => $jwt]);
     }
