@@ -4,9 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UsersTable extends Migration
+class Tweets extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,16 +13,12 @@ class UsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function(Blueprint $table) {
+        Schema::create('tweets', function(Blueprint $table) {
             $table->id()->unsigned();
-            $table->string('username');
-            $table->string('name');
-            $table->string('location');
-            $table->string('email');
-            $table->string('passwd');
-            $table->integer('active');
+            $table->integer('author')->unsigned();
+            $table->text('content');
+            $table->text('files');
             $table->timestamps();
-
         });
     }
 
@@ -34,6 +29,6 @@ class UsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('tweets');
     }
 }
